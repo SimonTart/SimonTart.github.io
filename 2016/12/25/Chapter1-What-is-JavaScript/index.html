@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,ECMAScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript历史   JavaScript是在1995年出现的，当时最开始的目的是为了在浏览器端做一些用户输入的验证。因为当时网速太慢，用户输入表单提交到后端，等待了半天发现浏览器返回的信息是某个必填的选项没填。这个时候就想要把这些检查放在浏览器端，这个时候Netscape希望通过一门在能在浏览器运行的脚本语言解决这个问题。于是当时在Netscape工作的Brendan Eich负责设计这">
+<meta name="keywords" content="JavaScript,ECMAScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 JavaScript简介">
+<meta property="og:url" content="http://yoursite.com/2016/12/25/Chapter1-What-is-JavaScript/index.html">
+<meta property="og:site_name" content="Life&amp;Code">
+<meta property="og:description" content="JavaScript历史   JavaScript是在1995年出现的，当时最开始的目的是为了在浏览器端做一些用户输入的验证。因为当时网速太慢，用户输入表单提交到后端，等待了半天发现浏览器返回的信息是某个必填的选项没填。这个时候就想要把这些检查放在浏览器端，这个时候Netscape希望通过一门在能在浏览器运行的脚本语言解决这个问题。于是当时在Netscape工作的Brendan Eich负责设计这">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-17T05:09:41.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第一章 JavaScript简介">
+<meta name="twitter:description" content="JavaScript历史   JavaScript是在1995年出现的，当时最开始的目的是为了在浏览器端做一些用户输入的验证。因为当时网速太慢，用户输入表单提交到后端，等待了半天发现浏览器返回的信息是某个必填的选项没填。这个时候就想要把这些检查放在浏览器端，这个时候Netscape希望通过一门在能在浏览器运行的脚本语言解决这个问题。于是当时在Netscape工作的Brendan Eich负责设计这">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/25/Chapter1-What-is-JavaScript/"/>
+
+
+
+
+
+  <title>第一章 JavaScript简介 | Life&Code</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f894b874e9ebe2242eb428f0957813de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Life&Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱生活，爱代码</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/生活" rel="section">
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-code">
+          <a href="/categories/代码" rel="section">
+            
+            代码
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/摄影" rel="section">
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sports">
+          <a href="/categories/运动" rel="section">
+            
+            运动
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            日志
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/Chapter1-What-is-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Trisolar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/18165607">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Life&Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第一章 JavaScript简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-25T12:04:12+08:00">
+                2016-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="JavaScript历史"><a href="#JavaScript历史" class="headerlink" title="JavaScript历史"></a>JavaScript历史</h4><p>   JavaScript是在1995年出现的，当时最开始的目的是为了在浏览器端做一些用户输入的验证。因为当时网速太慢，用户输入表单提交到后端，等待了半天发现浏览器返回的信息是某个必填的选项没填。这个时候就想要把这些检查放在浏览器端，这个时候Netscape希望通过一门在能在浏览器运行的脚本语言解决这个问题。于是当时在Netscape工作的Brendan Eich负责设计这个语言。最开始叫做LiveScript，后来为了想搭上当时Java的顺风车在发布时改成了JavaScript。并且Netscape在 Netscape Navigator 3 中发布了JavaScript，随后微软也在自家的浏览器Internet Explorer中也弄了一个叫做JScript的JavaScript的实现。这个时候市场上出现了两个不同的JavaScript的实现，开发者也越来越担心兼容性这个问题。所以1997年JavaScript1.1被提交到欧洲计算机制造商协会(ECMA，European Computer Manufacturers Association)，协会指定TC39号技术委员会负责“标准化一种通用、跨平台、供应商中立的脚本语言的语法和语义”，TC39 由来自 Netscape、Sun、微软、Borland 及其他关注脚本语言 发展的公司的程序员组成，他们经过数月的努力完成了 ECMA-262——定义一种名为 ECMAScript的新脚本语言的标准。<br><a id="more"></a></p>
+<h4 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h4><p>JavaScript由三个部分组成：</p>
+<ul>
+<li>核心 ECMAScript</li>
+<li>文档对象模型 (DOM Document Object Model)</li>
+<li><p>浏览器对象模型 (BOM Browser Object Model)</p>
+<h5 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h5><p>ECMAScript主要定义了语言的以下部分：</p>
+<ul>
+<li>语法（Syntax）</li>
+<li>类型（Types）</li>
+<li>语句（Statements）</li>
+<li>关键字（Keywords）</li>
+<li>保留字（Reserved Words）</li>
+<li>操作符（Operators）</li>
+<li>对象（Objects）</li>
+</ul>
+<p>ECMAScript并不和浏览器绑定，浏览器只是ECMAScript实现的宿主环境之一。ECMAScript在其他地方也有实现，比如：Node,ActionScript。</p>
+<h5 id="ECMAScript版本"><a href="#ECMAScript版本" class="headerlink" title="ECMAScript版本"></a>ECMAScript版本</h5><ul>
+<li>ECMAScript1 主要是将提交的javascript1.1中和浏览器相关的部分移除，并且支持了Unicode标准以及让对象保持平台独立性。</li>
+<li>ECMAScript2 主要是进行了大量的编辑工作，并没有添加，改变删除任何特性</li>
+<li>ECMAScript3 这一版是第一次真正的更新，添加了字符串操作，错误的定义以及数字的输出，也支持正则表达式，新的控制语句和try-catch异常。为了更好的国际化也做了一些小的相关改变。</li>
+<li>ECMAScript4 这一版是一次大的改变。包括了强类型变量，新的语句，新的数据结构，真正的类和类继承，新的数据交互方法。TC39委员会的一个子委员会（因为他们认为第四版的改动实在是太大了）提交了一个替补的3.1版本的草案，3.1版本相对来说是改变更小，能够在现有的JavaScript引擎上实现。最终3.1版本赢得了大多数的支持，第4版在正式发布之前就被废弃了。</li>
+<li>ECMAScript5 因为第4版被废弃，所以最终3.1版本成为了第5版的ECMAScript。</li>
+<li>ECMAScript6 ECMAScript6是2015年发布的，添加了新的语法，新的数据类型以及新的数据交互方式。极大地提高了JavaScript的生产效率，不过目前ECMAScript6在浏览器端的支持并不理想。需要通过<code>Babel</code>转为ECMAScript5的语法才能下浏览器中兼容。</li>
+</ul>
+<h5 id="文档对象模型（DOM）"><a href="#文档对象模型（DOM）" class="headerlink" title="文档对象模型（DOM）"></a>文档对象模型（DOM）</h5><p>文档对象模型是针对XML但是经过扩展用于HTML的API。文档对象模型把页面映射为一个有多层节点的结构，让用户可以用API对节点进行增删改查，这样的好处就是不用刷新页面就该修改页面的外观和内容。文档对象模型提供了访问和操作网页内容的方法和接口。例如我们通过DOM可以遍历节点以及操控DOM的样式以及监听DOM事件。</p>
+<h5 id="浏览器对象模型（BOM）"><a href="#浏览器对象模型（BOM）" class="headerlink" title="浏览器对象模型（BOM）"></a>浏览器对象模型（BOM）</h5><p>浏览器对象模型能让开发者操控浏览器的窗口，让开发者可以和页面以外的部分进行交互。浏览器对象提供了和浏览器窗口交互的方法和接口。例如可以通过BOM可以跳转页面，控制浏览器窗口的大小以及打开新的窗口等。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/ECMAScript/" rel="tag"># ECMAScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/22/2017-schedule/" rel="next" title="2017年的计划清单">
+                <i class="fa fa-chevron-left"></i> 2017年的计划清单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/02/Chapter2-JavaScript-in-HTML/" rel="prev" title="第二章 在HTML中使用JavaScript">
+                第二章 在HTML中使用JavaScript <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/18165607"
+                alt="Trisolar" />
+            
+              <p class="site-author-name" itemprop="name">Trisolar</p>
+              <p class="site-description motion-element" itemprop="description">希望能做点微小工作的膜法工程师</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/SimonTart" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zengxb94@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript历史"><span class="nav-number">1.</span> <span class="nav-text">JavaScript历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript实现"><span class="nav-number">2.</span> <span class="nav-text">JavaScript实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ECMAScript"><span class="nav-number">2.1.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ECMAScript版本"><span class="nav-number">2.2.</span> <span class="nav-text">ECMAScript版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文档对象模型（DOM）"><span class="nav-number">2.3.</span> <span class="nav-text">文档对象模型（DOM）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浏览器对象模型（BOM）"><span class="nav-number">2.4.</span> <span class="nav-text">浏览器对象模型（BOM）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trisolar</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

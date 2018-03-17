@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;lt;script&amp;gt;元素向HTML页面中插入JavaScript的主要方式是通过&amp;lt;script&amp;gt;元素。&amp;lt;script&amp;gt;元素中有以下6个属性：  async 可选，表示应该立即下载，下载完后立即执行。并且下载的过程不会阻塞页面中其他资源和脚本的下载，但是设置了该属性的脚本执行时仍然会阻塞页面的渲染和其他脚本的执行。并且只对外部脚本文件有效。 charset 可选，表示">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章 在HTML中使用JavaScript">
+<meta property="og:url" content="http://yoursite.com/2017/01/02/Chapter2-JavaScript-in-HTML/index.html">
+<meta property="og:site_name" content="Life&amp;Code">
+<meta property="og:description" content="&amp;lt;script&amp;gt;元素向HTML页面中插入JavaScript的主要方式是通过&amp;lt;script&amp;gt;元素。&amp;lt;script&amp;gt;元素中有以下6个属性：  async 可选，表示应该立即下载，下载完后立即执行。并且下载的过程不会阻塞页面中其他资源和脚本的下载，但是设置了该属性的脚本执行时仍然会阻塞页面的渲染和其他脚本的执行。并且只对外部脚本文件有效。 charset 可选，表示">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/Chapter2-JavaScript-in-HTML/asyncdefer.svg">
+<meta property="og:updated_time" content="2018-03-17T05:09:41.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二章 在HTML中使用JavaScript">
+<meta name="twitter:description" content="&amp;lt;script&amp;gt;元素向HTML页面中插入JavaScript的主要方式是通过&amp;lt;script&amp;gt;元素。&amp;lt;script&amp;gt;元素中有以下6个属性：  async 可选，表示应该立即下载，下载完后立即执行。并且下载的过程不会阻塞页面中其他资源和脚本的下载，但是设置了该属性的脚本执行时仍然会阻塞页面的渲染和其他脚本的执行。并且只对外部脚本文件有效。 charset 可选，表示">
+<meta name="twitter:image" content="http://yoursite.com/images/Chapter2-JavaScript-in-HTML/asyncdefer.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/02/Chapter2-JavaScript-in-HTML/"/>
+
+
+
+
+
+  <title>第二章 在HTML中使用JavaScript | Life&Code</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f894b874e9ebe2242eb428f0957813de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Life&Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱生活，爱代码</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/生活" rel="section">
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-code">
+          <a href="/categories/代码" rel="section">
+            
+            代码
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/摄影" rel="section">
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sports">
+          <a href="/categories/运动" rel="section">
+            
+            运动
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            日志
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/02/Chapter2-JavaScript-in-HTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Trisolar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/18165607">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Life&Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第二章 在HTML中使用JavaScript</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-02T17:25:36+08:00">
+                2017-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="lt-script-gt-元素"><a href="#lt-script-gt-元素" class="headerlink" title="&lt;script&gt;元素"></a>&lt;script&gt;元素</h2><p>向HTML页面中插入JavaScript的主要方式是通过&lt;script&gt;元素。<br>&lt;script&gt;元素中有以下6个属性：</p>
+<ul>
+<li><code>async</code> 可选，表示应该立即下载，下载完后立即执行。并且下载的过程不会阻塞页面中其他资源和脚本的下载，但是设置了该属性的脚本执行时仍然会阻塞页面的渲染和其他脚本的执行。并且只对外部脚本文件有效。</li>
+<li><code>charset</code> 可选，表示通过src指定的代码的字符集。一般很少使用，因为浏览器通常会忽视它。</li>
+<li><code>defer</code> 可选，表示脚本的执行可以安全的延迟到文档完全解析和展示之后。只对外部脚本文件有效，IE7及以下对内联脚本也有效。<a id="more"></a></li>
+<li><code>language</code> 已废弃。最初用来表示使用的是哪种脚本语言（例如：JavaScript,VBScript）。大部分浏览器会忽视这个属性，这个属性不应该再使用。</li>
+<li><code>src</code> 可选，表明将要执行代码的外部文件。</li>
+<li><code>type</code> 可选，用来替代<code>language</code>，用来表示脚本内容的类型（通常也叫做MIME type），一般来说这个值通常是<code>text/javascript</code>,尽管<code>text/javascript</code>和<code>text/ecmascript</code>已经都被废弃了。服务器在传输的时候MIME类型通常是<code>application/x-javascript</code>（实际上似乎浏览器传输的MIME type是<code>application/javascript</code>），但是在type中设置这个值可能导致脚本被浏览器忽略。所以考虑到约定俗成和浏览器之间最大的兼容性，通常设置为<code>text/javascript</code>。但是这个值也是可以忽略的，当忽略的时候<code>text/javascript</code>会被设置为默认值。</li>
+</ul>
+<h5 id="lt-script-gt-元素的使用"><a href="#lt-script-gt-元素的使用" class="headerlink" title="&lt;script&gt;元素的使用"></a>&lt;script&gt;元素的使用</h5><p>&lt;script&gt;主要有两种使用方式。<br>1.嵌入<br>像下面这样直接将JavaScript代码嵌入&lt;script&gt;元素中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种使用方式中，JavaScript代码中任何地方都不能出现&lt;/script&gt;字符串，因为浏览器在解析嵌入的JavaScript代码的时候会把字符串&lt;/script&gt;当做闭合标签&lt;/script&gt;。但是可以通过转移符使用。如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">"&lt;\/script&gt;"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>2.引入外部JavaScript文件<br>这种方法需要指定src为外部需要引入JavaScript文件的路径，像下面这样。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用这种方式需要注意的是在HTML中是不能省略闭合标签<code>&lt;/script&gt;</code>的，但是在XML中是可以的。</p>
+<p>注意：<br>当你引入了外部JavaScript文件时，如果你又在&lt;script&gt;中嵌入了内联JavaScript代码。引入的外部JavaScript文件会正常加载并执行，嵌入的代码会被忽略。&lt;script&gt;元素中的src可以指定为外部域名的JavaScript文件。所以加载外部域名的文件的时候要特别小心，以免引入了恶意的JavaScript文件。</p>
+<h5 id="标签的位置"><a href="#标签的位置" class="headerlink" title="标签的位置"></a>标签的位置</h5><p>过去的方式是把&lt;script&gt;放在页面的&lt;head&gt;元素内部，向下面这样：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Example Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- content --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种写法的目的是为了让外部引用（css和JavaScript文件）都在相同的区域，但是这样也产生了一个问题。&lt;head&gt;内部所有的JavaScript下载，解析，执行完成之后，页面才会开始渲染（页面的展现是从遇到body标签开始的）。这种情况下会产生能被人注意到的渲染延迟，在这段期间页面完全是一片空白。所以在现代网页中中，JavaScript的外部引用都被放在body标签中，并且在页面内容的后面。</p>
+<h4 id="延迟脚本"><a href="#延迟脚本" class="headerlink" title="延迟脚本"></a>延迟脚本</h4><p>HTML4.01为&lt;script&gt;定义了一个<code>defer</code>属性，表明脚本执行时不会改变页面的结构，脚本可以再整个页面都解析之后在执行。设置了<code>defer</code>的脚本的表明应该立即下载，但是执行会延后，延后到浏览器解析到&lt;/html&gt;标签之后执行。HTML5中规定了，设置了<code>defer</code>属性的脚本需要按照他们出现的顺序执行，并且是在<code>DOMContentLoaded</code>事件之前执行。但实际上，设置了<code>defer</code>的脚本并不一定按照顺序执行，也不一定在<code>DOMContentLoaded</code>事件之前执行。在HTML5中明确规定了<code>defer</code>只能用于外部脚本文件，因此会对那些内联的脚本忽略<code>defer</code>属性。但是在一些对HTML5不完全支持的浏览器中还是会支持内嵌的设置了<code>defer</code>的脚本（例如IE7及以下）。</p>
+<h5 id="异步脚本"><a href="#异步脚本" class="headerlink" title="异步脚本"></a>异步脚本</h5><p>HTML5中为&lt;script&gt;元素定义了<code>async</code>属性，和<code>defer</code>相似，这个属性告诉浏览应立即下载脚本，下载完成后立即执行。和<code>defer</code>不同的是这个属性不会确保脚本的执行顺序。这个属性的目的是为了让页面不必等待的设置了<code>async</code>的脚本的下载和执行，同时这些脚本也不需要等待其他脚本下载和执行。设置了<code>async</code>的脚本会在<code>load</code>事件之前执行，会在<code>DOMContentLoaded</code>事件之前或者之后执行。</p>
+<h5 id="引入外部文件的脚本，延迟脚本，异步脚本"><a href="#引入外部文件的脚本，延迟脚本，异步脚本" class="headerlink" title="引入外部文件的脚本，延迟脚本，异步脚本"></a>引入外部文件的脚本，延迟脚本，异步脚本</h5><p>ps:下面的脚本都是指引入外部JavaScript文件的脚本<br>脚本的下载和执行一般来说是会阻塞文档继续解析，只有等到脚本下载和执行完了之后才会继续解析文档。由于现代浏览器会为了加快页面呈现的速度，现代浏览器遇到了脚本之后仍然会解析文档后面的部分，但是文档的渲染会阻塞。所以浏览器出现了并行加载，顺序执行脚本的现象。所以一般来说普通脚本，延迟脚本，异步脚本基本都是立即下载（不考虑域名连接数限制），只是执行的时机不同，不过执行的时候都会阻页面的渲染和其他脚本（主要是因为单线程）。这三种情况的下载和执行可以用下图总结：</p>
+<img src="/images/Chapter2-JavaScript-in-HTML/asyncdefer.svg" width="840" height="140">
+<h5 id="在XHTML中的用法"><a href="#在XHTML中的用法" class="headerlink" title="在XHTML中的用法"></a>在XHTML中的用法</h5><p>ps:HTML5已经被前端大量的使用了，感觉前端都没人用XHTML了，所以本小段关于XHTML的可以跳过。<br>可扩展超文本标记语言，即 XHTML(Extensible HyperText Markup Language)，是将 HTML 作为 XML 的应用而重新定义的一个标准。<br>在XHTML中，&lt;script&gt;元素内嵌代码有着更加严格的标准（比如&lt;会被解释为一个标签的开始），所以通常将JavaScript代码包裹在一个CDATA的区域，这样可以使用宽松格式的代码，在这里面可以使用任意字符且不会导致错误。就像下面这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined">&lt;![CDATA[</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (a &lt; b) &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"A is less than B"</span>);</span></span><br><span class="line"><span class="javascript">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"A is greater than B"</span>);</span></span><br><span class="line"><span class="javascript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"A is equal to B"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">]]&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上代码在兼容XHTML中的浏览其中可以正常运行，但是不兼容的怎么办呢？可以使用JavaScript的注释把CDATA标记给注释掉。向下面这样：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//&lt;![CDATA[</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (a &lt; b) &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"A is less than B"</span>);</span></span><br><span class="line"><span class="javascript">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"A is greater than B"</span>);</span></span><br><span class="line"><span class="javascript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">          alert(<span class="string">"A is equal to B"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript"><span class="comment">//]]&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="废弃的语法"><a href="#废弃的语法" class="headerlink" title="废弃的语法"></a>废弃的语法</h5><p>在最开始的时候，并不是所有的浏览器都支持&lt;script&gt;元素，所以不支持的浏览器会把内嵌的代码显示出来，解决方案就是将内嵌的脚本用HTML注释包裹起来。不支持的浏览器就会忽视内嵌的代码，想下面这样使用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;<span class="xml"><span class="comment">&lt;!--</span></span></span><br><span class="line"><span class="xml">    function()&#123;</span></span><br><span class="line"><span class="xml">        alert("Hello World!");</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">--&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="内嵌代码和外部文件对比"><a href="#内嵌代码和外部文件对比" class="headerlink" title="内嵌代码和外部文件对比"></a>内嵌代码和外部文件对比</h2><p>虽然内嵌JavaScript代码没有什么问题，但是尽量使用外部文件通常被认为是最佳实践。因为使用外部脚本文件有以下优点：</p>
+<ul>
+<li>可维护性 在一个文件夹下面维护JavaScript文件里的代码总是会比在页面的不同地方去维护方便的许多。</li>
+<li>缓存 通过一些配置，浏览器可以缓存所有的外部JavaScript文件，意味着不同的页面使用相同的地址的JavaScript文件，该文件只会下载一次。最终页面会加载得更快。</li>
+<li>未来的趋势 这样写不需要考虑XHTML的兼容性，因为外部文件引用的格式同样适用于XHTML。</li>
+</ul>
+<h2 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h2><p>Internet Explorer 5.5 第一次使用了文档模型的概念，并且可以通过文档类型（doctype）切换。</p>
+<ul>
+<li>怪癖模式/混杂模式（quirks mode）,该模式会让浏览器的的行为与IE 5和Navigator 4行为相同（包括那些非标准的特性）,这种模式主要是为了兼容性的考虑。主要是因为在最开始的时候网页有两个版本，一个是Microsoft Internet Explorer一个是Netscape Navigator，当W3C标准化了网页标准的时候，为了兼容以前的页面，就诞生了这种模式。</li>
+<li>标准模式（full standards mode）,老版本IE的行为会更加接近标准，现代浏览器则是会按照CSS和HTML规范渲染。</li>
+<li>标准准模式（almost standards mode），IE的一种模式，接近标准，但是仍然会有一些怪异的表现。</li>
+</ul>
+<p>doctype除了可以切换文档模式，同时也是为了告诉浏览器使用了HTML的哪个版本书写了文档。如果没有申明文档类型，浏览器会默认使用怪癖模式。目前来说都是使用标准模式，因为怪癖模式会发生一些奇怪的现象，并且不同浏览器下的怪癖模式都不一样，需要花费大量时间去兼容。<br>标准模式可以通过一下方式开启:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML 4.01 严格型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- XHTML 1.0 严格型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- HTML 5 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而对于准标准模式，则可以通过使用过渡型(transitional)或框架集型(frameset)文档类型来触发，如下所示:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML 4.01 过渡型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></span><br><span class="line"><span class="meta">"-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- HTML 4.01 框架集型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC 9 "-//W3C//DTD HTML 4.01 Frameset//EN"</span></span><br><span class="line"><span class="meta">"http://www.w3.org/TR/html4/frameset.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- XHTML 1.0 过渡型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></span><br><span class="line"><span class="meta">"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- XHTML 1.0 框架集型 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></span><br><span class="line"><span class="meta">"-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="lt-noscript-gt-元素"><a href="#lt-noscript-gt-元素" class="headerlink" title="&lt;noscript&gt;元素"></a>&lt;noscript&gt;元素</h4><p>早期的页面面临着一个问题，对不支持JavaScript的浏览器如何让页面平稳退化。解决方案就是&lt;noscript&gt;元素，对于不支持JavaScript的浏览器&lt;noscript&gt;内部的内容就会显示出来。&lt;noscript&gt;的内容会在以下两种情况下显示：</p>
+<ul>
+<li>浏览器不支持JavaScript</li>
+<li>浏览器支持JavaScript，但是JavaScript被禁用了</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/25/Chapter1-What-is-JavaScript/" rel="next" title="第一章 JavaScript简介">
+                <i class="fa fa-chevron-left"></i> 第一章 JavaScript简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/02/Chapter3-Language-Basics/" rel="prev" title="第三章 JavaScript基本概念">
+                第三章 JavaScript基本概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/18165607"
+                alt="Trisolar" />
+            
+              <p class="site-author-name" itemprop="name">Trisolar</p>
+              <p class="site-description motion-element" itemprop="description">希望能做点微小工作的膜法工程师</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/SimonTart" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zengxb94@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-script-gt-元素"><span class="nav-number">1.</span> <span class="nav-text">&lt;script&gt;元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lt-script-gt-元素的使用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">&lt;script&gt;元素的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标签的位置"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">标签的位置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#延迟脚本"><span class="nav-number">1.0.1.</span> <span class="nav-text">延迟脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#异步脚本"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">异步脚本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引入外部文件的脚本，延迟脚本，异步脚本"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">引入外部文件的脚本，延迟脚本，异步脚本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在XHTML中的用法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">在XHTML中的用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#废弃的语法"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">废弃的语法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌代码和外部文件对比"><span class="nav-number">2.</span> <span class="nav-text">内嵌代码和外部文件对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档模式"><span class="nav-number">3.</span> <span class="nav-text">文档模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-noscript-gt-元素"><span class="nav-number">3.0.1.</span> <span class="nav-text">&lt;noscript&gt;元素</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trisolar</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

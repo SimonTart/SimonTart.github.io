@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一 语法JavaScript的语法大量借鉴C语言和其他的类C语言（例如：Java和Perl）。 大小写敏感JavaScript里面所有的东西都是大小写敏感的。变量，函数名和操作符等都是大小写敏感的。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三章 JavaScript基本概念">
+<meta property="og:url" content="http://yoursite.com/2017/01/02/Chapter3-Language-Basics/index.html">
+<meta property="og:site_name" content="Life&amp;Code">
+<meta property="og:description" content="一 语法JavaScript的语法大量借鉴C语言和其他的类C语言（例如：Java和Perl）。 大小写敏感JavaScript里面所有的东西都是大小写敏感的。变量，函数名和操作符等都是大小写敏感的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-17T05:09:41.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三章 JavaScript基本概念">
+<meta name="twitter:description" content="一 语法JavaScript的语法大量借鉴C语言和其他的类C语言（例如：Java和Perl）。 大小写敏感JavaScript里面所有的东西都是大小写敏感的。变量，函数名和操作符等都是大小写敏感的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/02/Chapter3-Language-Basics/"/>
+
+
+
+
+
+  <title>第三章 JavaScript基本概念 | Life&Code</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f894b874e9ebe2242eb428f0957813de";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Life&Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱生活，爱代码</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/生活" rel="section">
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-code">
+          <a href="/categories/代码" rel="section">
+            
+            代码
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/categories/摄影" rel="section">
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sports">
+          <a href="/categories/运动" rel="section">
+            
+            运动
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            日志
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/02/Chapter3-Language-Basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Trisolar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/18165607">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Life&Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第三章 JavaScript基本概念</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-02T21:34:39+08:00">
+                2017-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一-语法"><a href="#一-语法" class="headerlink" title="一 语法"></a>一 语法</h2><p>JavaScript的语法大量借鉴C语言和其他的类C语言（例如：Java和Perl）。</p>
+<h5 id="大小写敏感"><a href="#大小写敏感" class="headerlink" title="大小写敏感"></a>大小写敏感</h5><p>JavaScript里面所有的东西都是大小写敏感的。变量，函数名和操作符等都是大小写敏感的。<br><a id="more"></a></p>
+<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><p>标识符是变量，函数，属性，函数参数的名字。标识符按照下列格式由一个和多个字符组成的。</p>
+<ul>
+<li>第一个字符必须是字母、下划线（_）或者一个美元符号（$）</li>
+<li>其他的字符必须是字母、下划线、美元符号或者数字<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5></li>
+</ul>
+<p>单行注释由两个<code>/</code>组成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// single line comment</span></span><br></pre></td></tr></table></figure>
+<p>多行注释由<code>/*</code>开始，<code>*/</code>结尾</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * this is multi-line</span></span><br><span class="line"><span class="comment"> * comment</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h5 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h5><p>ECMAScript5中介绍了严格模式的概念（strict mode）,严格模式对JavaScript来说一种不同的解析和执行方式。严格模式中，ECMAScript3中的一些不确定行为会得到处理，同时对一些不安全的行为也会抛出异常。<br>你可以在整个脚本的顶部写下下面的代码使整个脚本进入脚本模式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span></span><br></pre></td></tr></table></figure></p>
+<p>你也可以通过把<code>&quot;use strict&quot;</code>放在函数的顶部让函数在严格模式下执行，像下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    <span class="comment">// function body</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>&quot;use stirct&quot;;</code>看上去就是一个普通的字符串。选用这种方式是为了不破坏ECMAScript3语法的同时让支持严格模式的JavaScript引擎使用严格模式。</p>
+<h5 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h5><p>ECMAScript的语句以分号（;）结束，分号也是可以省略的。如果省略，解释器会自动确定分号的位置。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = a + b</span><br><span class="line"><span class="keyword">var</span> diff = a - b;</span><br></pre></td></tr></table></figure></p>
+<p>尽管分号可以省略，但是还是建议加上。这样可以避免很多一些因为省略分号导致的错误，也可以方便后面压缩代码。在某些情况下加上分号也能提高性能。<br>多行代码可以组合到代码块中，代码块以<code>{</code>开始，<code>}</code>结束。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(test)&#123;</span><br><span class="line">    test = <span class="literal">false</span>;</span><br><span class="line">    alert(test);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一般来说，只有当条件控制语句（例如if）执行多行代码的时候才需要代码块，但是最佳实践是条件控制语只需要执行一行代码也最好加上代码块。这样可以让代码结构更加清晰。</p>
+<h3 id="二-关键字和保留字"><a href="#二-关键字和保留字" class="headerlink" title="二 关键字和保留字"></a>二 关键字和保留字</h3><p>ECMA-262描述一些用于特殊用途的关键字。例如可以表示控制语句的开始和结束，以及执行一些特殊的操作。例如：<code>var</code>、<code>break</code>、<code>if</code>等就是关键字。</p>
+<p>ECMA-262描述了一些现在没有特殊用途，但是先保留起来，以便将来当做关键字使用的保留字。例如<code>int</code>、<code>abstract</code>等，虽然现在不是关键字但是将来有可能是关键字。</p>
+<p>ECMAScript具体每个版本的关键字保留字可以参考<a href="https://mathiasbynens.be/notes/reserved-keywords" target="_blank" rel="noopener">这里</a>。</p>
+<p>在非严格模式下有一些保留字（例如<code>extends</code>、<code>super</code>等）可以使用，但是最好不要使用关键字作为标识符和属性名。</p>
+<p>在ECMAScript3中关键字和保留字都不能作为标识符和属性名，但是ECMAScript5中啥稍微改变了一下规则，关键字和保留字都不能作为标识符，但是用作属性名。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>ECMAScript的变量是松散类型的，松散类型意味着变量可以保存任何类型数据。每个变量仅仅是用于保存值得占位符而已。我们可以通过<code>var</code>操作符后面跟上一个变量的名字定义一个变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码定义了一个message变量，对于未初始化的变量。他保存着一个特殊的值<code>undefined</code>（这个值会在后面详细介绍）。当变量初始化了一个值之后，后面也有也可以改变变量的值或者类型。像下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"hi"</span>; <span class="comment">//变量message初始化为字符串"hi"</span></span><br><span class="line">message = <span class="number">123</span>; <span class="comment">//变量message被重新赋值为数字123，改变了message存储的值得类型。</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>var</code>定义的变量会成为定义该变量的作用域的局部变量。例如在函数内部利用<code>var</code>定义变量，函数执行完之后局部变量就会被销毁。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="string">"hi"</span>; <span class="comment">//局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">//错误</span></span><br></pre></td></tr></table></figure></p>
+<p>当生命变量的时候省略<code>var</code>，那么这个变量就是全局变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    message = <span class="string">"hi"</span>; <span class="comment">//局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">//hi</span></span><br></pre></td></tr></table></figure></p>
+<p>用一条声明也可以声明多个变量。变量之间用<code>,</code>号隔开。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"hi"</span>,</span><br><span class="line">    name = <span class="string">"zhangsan"</span>,</span><br><span class="line">    age = <span class="number">22</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>ECMAScript中定义了五种简单数据类型（也叫基本基本数据类型）：Undefined、Null、Boolean、Number、String。也有一种复杂的数据类型Object。Object是一组无序的名值对（键值对）组成。<br>因为ECMAScript中变量是松散类型，所以需要一种方法来判断变量存储的数据类型。<code>typeof</code>可以提供这方面的信息，<code>typeof</code>根据值返回一下字符串：</p>
+<ul>
+<li>undefined，如果值是未定义（undefined）</li>
+<li>boolean，如果值是布尔值(Boolean)</li>
+<li>string，如果值是字符串（String）</li>
+<li>number，如果值是数字（Number）</li>
+<li>object，如果值是对象或者Null</li>
+<li>function，如果值是函数</li>
+</ul>
+<h5 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h5><p>Undefined类型只有一个值undefined，当变量没有初始化的时候undefined会自动赋值给变量，当然你也手动给一个变量赋值为undefined。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message;</span><br><span class="line">alert(<span class="keyword">typeof</span> message);<span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure></p>
+<h5 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h5><p>Null是第二个只有一个值的数据类型。他只有一个值null。从逻辑角度看，null代表一个空对象指针。这也是为什么用typeof判断null的类型时返回的是object。<br>undefined是由null派生而来，所以null==undefined返回true。</p>
+<h5 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h5><p>Boolean类型有两个值：true、flase。<br>虽然Boolean类型只有两个值，但是任何类型的值都可以通过Boolean()方法转化为Boolean值。下表列出了不同值得转换规律：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转换为true的值</th>
+<th>转换为false的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>任何非空字符串</td>
+<td>空字符串（””）</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>任何非0数字（包括无穷大）</td>
+<td>0或者NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>任何非空对象</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>没有值</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h5><p>ECMAScript中的数字类型使用IEEE-754格式来表示整数和浮点数。<br>1.整数<br>整数你可以使用十进制，也可以使用八进制（以0开头），十六进制（0x开头，大小写不敏感）。十六进制是由0-9，A-F组成的，字母是不区分大小的的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intNum = <span class="number">55</span>; <span class="comment">//十进制整数55</span></span><br><span class="line"><span class="keyword">var</span> octalNum1 = <span class="number">070</span>; <span class="comment">//八进制数，等于十进制56</span></span><br><span class="line"><span class="keyword">var</span> octalNum2 = <span class="number">079</span>; <span class="comment">//不合法的八进制，所以被解释为十进制79</span></span><br><span class="line"><span class="keyword">var</span> hexNum1 = <span class="number">0xA</span>; <span class="comment">//十六进制，等于十进制10</span></span><br><span class="line"><span class="keyword">var</span> hexNum1 = <span class="number">0X1f</span>; <span class="comment">//十六进制，等于十进制31</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure></p>
+<p>2.浮点数<br>浮点数必须是十进制，为了定义浮点数你必须包含一个小数点。通常小数点前面的整数是0的话可以省略。但通常不推荐省略。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> floatNum1 = <span class="number">1.1</span>;</span><br><span class="line"><span class="keyword">var</span> floatNum2 = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">var</span> floatNum3 = <span class="number">.1</span>;</span><br></pre></td></tr></table></figure></p>
+<p>如果小数点后没有跟任何数字，那么他会变成整数。同样的，如果浮点数本身的值表示的是一个整数，那么它也会变成整数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> floatNum1 = <span class="number">1.</span>;</span><br><span class="line">alert(floatNum1); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> floatNum2 = <span class="number">1.0</span>;</span><br><span class="line">alert(floatNum2); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> floatNum3 = <span class="number">1.1</span>;</span><br><span class="line">alert(floatNum3); <span class="comment">// 1.1</span></span><br></pre></td></tr></table></figure></p>
+<p>对于特别大和特别小的数，可以用科学计数发表示。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> floatNum = <span class="number">3.17e7</span>; <span class="comment">//等于31700000</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的这种情况用科学计数法表示会更加简洁。上面的科学计数法本质上是表示3.17乘以10^7。<br>对于特别小的数，例如：0.00000000000000003，可以间接地用3e-17表示。<br>浮点数可以精确到小数第17位，但是浮点数之间的算数运算没有整数来得精确。例如，<br>0.1+0.2的值是0.30000000000000004。并不是所有的浮点数的运算都像0.1+0.2那样是不精确的。比如：0.25+0.05的结果是0.3。</p>
+<p>3.数值的范围<br>ECMAScript并不能代表世上所有的数字，ECMAScript能表示的最小的值保存在<code>Number.MIN_VALUE</code>中，在大多数浏览器中是5e-324。最大的值存储在<code>Number.MAX_VALUE</code>中，在大多数浏览器中是1.7976931348623157e+308，如果计算的数值超过了这个范围，那么通常会自动获得一个特殊的值<code>Infinity</code>，正无穷用<code>Infinity</code>表示，负无穷用<code>-Infinity</code>表示。我们可以通过<code>isFinite</code>方法判断一个数是否在最大值和最小值之间，如果需要的话，传入的值会先转换为数字。例如：isFinite(“1e20”)这种情况。转换规则和Number()函数一样，后面会介绍。</p>
+<p>4.NaN<br>这是一个特殊的数字值叫NaN，是Not a Number的简写。迎来表示操作数本来是要返回数字的但是失败了。例如”123”/123返回的就是NaN。任何涉及到NaN的操作都会返回NaN。NaN不和任何值相等，包括他自己。例如：NaN == NaN 返回false。所以ECMAScript提供了isNaN来判断一个值是不是NaN。isNaN在会尝试将传入的参数转换为数字，若转换结果为数字则返回true，若转化结果是NaN则返回true。这种转换规则和Number()函数一样，后面会介绍。</p>
+<h5 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h5><p>##备注<br>感觉这种总结的方式太低了，毕竟写文章需要写的详细。后面的总结还是放到私人的笔记里面去。这样可以简洁一些。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/02/Chapter2-JavaScript-in-HTML/" rel="next" title="第二章 在HTML中使用JavaScript">
+                <i class="fa fa-chevron-left"></i> 第二章 在HTML中使用JavaScript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/18165607"
+                alt="Trisolar" />
+            
+              <p class="site-author-name" itemprop="name">Trisolar</p>
+              <p class="site-description motion-element" itemprop="description">希望能做点微小工作的膜法工程师</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/SimonTart" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zengxb94@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-语法"><span class="nav-number">1.</span> <span class="nav-text">一 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大小写敏感"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">大小写敏感</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标识符"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注释"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">严格模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#语句"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-关键字和保留字"><span class="nav-number">1.1.</span> <span class="nav-text">二 关键字和保留字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Undefined类型"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Undefined类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Null类型"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">Null类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Boolean类型"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">Boolean类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Number类型"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">Number类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未完待续"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trisolar</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
