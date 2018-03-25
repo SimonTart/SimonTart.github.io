@@ -96,6 +96,7 @@ menu:
   home: / || home
   life: /categories/生活
   code: /categories/代码
+  read: /categories/读书
   photo: /categories/摄影
   sports: /categories/运动
   archives: /archives/ || archive

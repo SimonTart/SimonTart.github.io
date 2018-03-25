@@ -1,5 +1,5 @@
 title:
-  archive: 归档
+  archive: 日志
   category: 分类
   tag: 标签
   schedule: 日程表
@@ -18,6 +18,7 @@ menu:
   commonweal: 公益404
   life: 生活
   code: 代码
+  read: 读书
   photo: 摄影
   sports: 运动
 
