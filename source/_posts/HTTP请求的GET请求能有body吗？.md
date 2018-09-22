@@ -11,6 +11,7 @@ categories:
 date: 2018-09-22 11:44:00
 ---
 昨天上班的时候后端有一个`delete`请求，要求我把参数放在`url`的`query string`上面。于是我说其实可以放在请求的实体中，但是后端说`delete`和`get`是没有请求实体的。这和我的记忆不太一样。那么到底`delete`和`post`请求能有实体吗？
+<!-- more -->
 
 ## 先看网上的资料
 先通过简单的搜索在stack overflow找到一个类似的问题, [Is an entity body allowed for an HTTP DELETE request?](https://stackoverflow.com/questions/299628/is-an-entity-body-allowed-for-an-http-delete-request)。回答中说到并没有禁止和不推荐在`get`和`delete`方法中使用实体。意思就是说其实是可以使用的。那么再看回答中给出的规范的资料，确实http规范中并没有说明有任何方法不能使用
