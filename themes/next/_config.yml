@@ -367,8 +367,8 @@ baidu_analytics: f894b874e9ebe2242eb428f0957813de
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: Trisolary
   count: true
 
 # Hypercomments
