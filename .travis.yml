@@ -13,4 +13,4 @@ script:
 - hexo clean
 - hexo generate
 after_success:
-- scp -o stricthostkeychecking=no -r public/* root@212.64.80.113:~/var/www/my-blog
+- scp -o stricthostkeychecking=no -r public/* root@212.64.80.113:/var/www/my-blog
