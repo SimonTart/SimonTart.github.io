@@ -79,4 +79,4 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:SimonTart/SimonTart.github.io.git
-  branch: master
+  branch: blog

@@ -4,3 +4,6 @@
 
 ## 地址
 [http://blog.trisolar.com](http://blog.trisolar.com)
+
+## 其他
+hexo-cli: 1.1.0
