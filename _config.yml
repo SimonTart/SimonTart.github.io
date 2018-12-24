@@ -5,14 +5,14 @@
 # Site
 title: Life&Code
 subtitle: 爱生活，爱代码
-description: 希望能做点微小工作的膜法工程师
+description: 希望能做点微小的工作
 author: Trisolar
 language: zh-Hans
 timezone: Asia/Shanghai
 avatar: https://avatars0.githubusercontent.com/u/18165607
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.triolaries.com
+url: http://blog.trisolar.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -42,7 +42,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -51,7 +51,7 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
