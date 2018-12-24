@@ -4,7 +4,7 @@ branches:
   - master
 before_install:
 - openssl aes-256-cbc -K $encrypted_2caea44aff20_key -iv $encrypted_2caea44aff20_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - npm install -g hexo-cli@1.1.0
 install:
 - npm install
