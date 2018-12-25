@@ -74,6 +74,18 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    src: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+    config:
+      # MathJax config
+  katex:
+    css: custom_css_source
+    js: custom_js_source # not used
+    config:
+      # KaTeX config
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
