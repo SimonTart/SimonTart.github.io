@@ -347,11 +347,8 @@ font:
 # Third Party Services Settings
 # ---------------------------------------------------------------
 
-# MathJax Support
 mathjax:
-  enable: true
-  per_page: true
-  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+   enable: true
 
 # Han Support docs: https://hanzi.pro/
 han: false
@@ -368,7 +365,7 @@ baidu_analytics: f894b874e9ebe2242eb428f0957813de
 # Disqus
 disqus:
   enable: true
-  shortname: Trisolary
+  shortname: Trisolar
   count: true
 
 # Hypercomments

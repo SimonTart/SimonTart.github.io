@@ -77,7 +77,7 @@ theme: next
 math:
   engine: 'mathjax' # or 'katex'
   mathjax:
-    src: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+    src: "//cdn.bootcss.com/mathjax/2.7.5/latest.js"
     config:
       # MathJax config
   katex:
