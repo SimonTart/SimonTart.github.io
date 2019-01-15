@@ -1,7 +1,10 @@
 title: 2LDR是什么
 author: Trisolar
-date: 2019-01-14 21:34:19
 tags:
+  - 2LDR
+categories:
+  - 2LDR
+date: 2019-01-14 21:34:00
 ---
 2LDR取自英文[TL;DR](https://en.wikipedia.org/wiki/TL;DR)，其中2代替了T字母。英文中TL;DR是”too long;didn't read”的缩写，有时候也当做“too lazy;didn't read”的缩写。中文可以翻译成“太长不看”，在文章中TL;DR用于表示下面的这一段是文章的概要，一般是一段文字，一有时候也会通过序号，一条一条的列举出文章的核心要点。TL;RD既可以让读者在阅读文章内容之前对文章所讲做到心中有数，也可以让不想看全文的读者直接了解到文章的核心要点。有些平台因为各种原因不能使用TLDR作为名字，并且“2”和“too"同音，所以我使用“2”代替“T”。这个灵感来自于[V2EX](https://www.v2ex.com/faq)。2LDR是我要做的一个系列，这个系列中我准备给我看过的文章写TL;DR，有点像写梗概概要或总结，也有点有点文章快读的意思。
 <!-- more -->
